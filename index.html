@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trees in New York</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Exploratory Data Analysis of the 2015 Street Tree Census - New York City</h1>
+        <p>On this page, I explore and analyze the "2015 Street Tree Census - Tree Data" database (raw data available <a href="https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh/about_data" target="_blank">here</a>.)
+        This survey counts trees on the streets of New York City and includes data about each tree's species, health, size, location, and surroundings. The census was organized by the New York City Department of Parks and Recreation.
+        It is important to note that only 43% of this data was collected by specifically trained and paid staff for this census. Another 25% was collected by New York City Park staff who were not explictly hired for this task.
+        The remaining 32% was collected by unpaid volunteers. While all participants received some amount of training (the link to the training PDF is unfortunately dead), there is always a possibility of misleading or inaccurately collected data. 
+        This is especially true for qualitative variables such as the health of a tree: which category the tree was placed in was still up to the discretion of the person collecting the data, and different people may have had different criteria. 
+        Here, I will analyze seven primary variables: tree species, tree health, tree status, diameter of the tree, presence and type of a tree guard, number of signs of stewardship, and the borough the tree is in.
+        </p>
+        <div class="overview">
+            <h2>Data Summary</h2>
+            <ul>
+                <li>There were <b>683,788</b> trees recorded in the 2015 Street Tree Census. Of those, <b>17,654</b> were stumps and <b>13,961</b> were standing dead trees. These totalled 31,616 trees, and because they were dead or stumps, they were not counted in several categories.
+                Specifically, tree health, signs of stewardship, tree species, and presence and types of tree guards were not recorded for dead trees and stumps. </li>
+                <li>Of the <b>652,173</b> live trees:
+                    <ul>
+                        <li><b>528,850</b> trees were deemed to be in "good" health, <b>96,504</b> trees in "fair" health, and <b>26,818</b> trees in "poor" health.</li>
+                        <li><b>487,823</b> trees showed no signs of stewardship, <b>143,557</b> trees showed one or two signs of stewardship, <b>19,183</b> showed three or four signs of stewardships, and <b>1,610</b> trees showed four or more signs of stewardship.
+                        Despite the apparent overlap between "three or four" and "four or more" signs, no trees were doubled counted in both categories. We can assume that one of the categories was misnamed, or it was up to an indivdual to decide which category to place a tree with four signs of
+                        stewardship in, but I could not determine either way.</li> 
+                        <li><b>572,306</b> trees had no tree guard present. Of the <b>79,897</b> trees that had tree guards, <b>51,866</b> of them had tree guards that were deemed helpful in protecting the tree, <b>20,252</b> trees had tree guards that harmed the tree, and census takers were unsure if the tree guard
+                        was helpful or harmful on <b>7,748</b> trees.</li>
+                        <li><b>132</b> species of tree were counted in this census. I will elaborate on the 10 most common, and group the rest as "other". There were <b>87,014</b> London planetrees, <b>64,264</b> Honeylocusts, <b>58,931</b> Callery pears, <b>53,185</b> pin oaks, <b>34,189</b> Norway maples, 
+                        <b>29,742</b> littleleaf lindens, <b>29,279</b> cherries, <b>29,258</b> Japanese zelkovas, <b>21,024</b> gingkos, and <b>19,338</b> sophoras. The remaining <b>225,945</b> trees belonged to various other species.</li>
+                    </ul>
+                </li>
+                <li>Going back to statistics evaluated for all <b>683,788</b> trees, including the dead, standing trees and stumps:
+                    <ul>
+                        <li><b>204,497</b> trees had a diameter between 1 and 5 inches (inclusive, rounded to the nearest whole inch). <b>160,056</b> had a diameter beyween 6 and 10 inches, <b>132,901</b> between 11 and 15 inches, <b>79,502</b> between 16 and 20 inches, <b>50,732</b> between 
+                        21 and 25 inches, <b>29,510</b> between 26 and 30 inches, <b>16,778</b> between 31 and 35 inches, and <b>9,534</b> with a diameter of 36 inches or greater. Notably, 80 trees were recorded with a diameter of greater than 100 inches, with the maximum value being 450 inches.
+                        For reference, that equates to 37 feet in diameter. The world record for largest tree diameter is 36 feet, so this is rather unlikely. According to the NYC Department of Parks and Recreation, diameter measurements for standing trees were taken by measuring circumference and dividing by 
+                        3.14. This calculation may not have been performed on some data, causing large outliers, but even then, that would leave a diameter of 143 inches or nearly twelve feet. I will be visualizing the data that I have available, but note that the large numbers are especially unreliable.</li>
+                        <li><b>250,551</b> trees were observed in the Queens borough. <b>177,293</b> trees were in Brooklyn, <b>105,318</b> trees in Staten Island, <b>85,203</b> trees in the Bronx, and <b>65,423</b> trees in Manhattan.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="visualizations">
+            <h2>Visualizations</h2>
+            <h3>Frequencies</h3>
+            <img src="visualizations/status.png">
+            <img src="visualizations/health.png">
+            <img src="visualizations/stewardship.png">
+            <img src="visualizations/guards.png">
+            <img src="visualizations/species.png">
+            <img src="visualizations/diameter.png">
+            <img src="visualizations/borough.png">
+            <h3>Variable Relationships</h3>
+            <img src="visualizations/diam_species.png">
+            <img src="visualizations/diam_by_stewardship.png">
+            <img src="visualizations/diam_guards_borough.png">
+        </div>
+        <div class="hypotheses">
+            <h2>Hypotheses</h2>
+            <ol>
+                <li>Trees with signs of stewardship are generally larger and healthier.</li>
+                <p>Looking at the figure "Median Diameter of New York City Trees by Number of Signs of Stewardship", it is true that the trees with no signs of stewardship tend to be larger. However, looking at the frequency graph of "Signs of Stewardship in New York City", 
+                we see that the majority of trees (just under five hundred thousand) have no signs of stewardship present. Also, large trees may seem much stronger, so they don't visibly need the stewardship a thin, weak tree might. When we look at trees with 1 to 2 signs 
+                of stewardship, they tend to be smaller than trees with 3, 4, or more signs of stewardship. The data here is somewhat inconsistent, but it looks like there is a possible connection that can be explored. </p>
+                <li>Trees guards are more effective in protecting a tree earlier in life.</li>
+                <p>When examining the "Median Diameter of New York City Trees with Guards, by Borough", we see that in every borough but Staten Island, the trees with harmful tree guards have a larger median diameter. On Staten Island, they have the same median diamter. To me, 
+                this suggests that, rather than the tree guard causing the size difference, tree guards on smaller trees are more likely to be seen as helpful. A tree guard is meant to protect a tree from damage, but can in itself hurt the tree if it isn't made larger as the 
+                tree grows, or if it stops the tree from getting water. Thus, the cost-benefit is probably higher on thinner trees, which are weak and need protection, while sturdy trees with a large diameter do not need the help, and are more likely to be hurt by the tree guard. </p>
+                <li>Different boroughs of New York City have different ideas, standards, and regulations around curbside trees.</li>
+                <p>In the same figure as above, examine the difference in median diameter from trees with a harmful tree guard to trees with a helpful tree guard. This varies quite a bit based on borough. I hypothesize the difference is due to cultural or legal differences between them.
+                For example, the median diameter of trees with both types of tree guard is the same on Staten Island. This could be because either almost all or very few trees have tree guards at all, because the majority of trees on Staten Island were planted at a similar time and grew
+                to a similar diameter, or because their parks and recreation officers are very discerning with when a tree guard is needed. Queens and the Bronx both have much larger trees with harmful tree guards—perhaps because tree guards are put up when the tree is small, but not 
+                removed or upgraded when it grows, causing a previously helpful guard to be marked as harmful. There are many interesting possibilities. While this would be harder to test than the other two hypotheses, it would be possible with more thorough per-borough censuses, or by
+                surveying parks and recreation policies.
+                </p>
+            </ol>
+        </div>
+    </body>
+</html> 
